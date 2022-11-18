@@ -1,0 +1,34 @@
+<div class="login">
+
+    <div class="inputLogin">
+    {{#if this.validationUser}}
+        <div id="verificator" class="verifier">
+            <span class="rup-lozenge rup-lozenge--sm"  aria-describedby="lozenge-desc-6">Verifier</span>
+            <p id="lozenge-desc-6" class="rup-visually-hidden">Verifier</p> 
+        </div>
+        <p></p>
+    {{else}}
+        <div id="verificator" class="verifier">
+            <span class="rup-lozenge rup-lozenge--success" aria-describedby="lozenge-desc-3">Success</span>
+            <p id="lozenge-desc-3" class="rup-visually-hidden">Success</p>
+            <span class="rup-loader rup-loader--sm" role="status">                 
+            <span class="rup-visually-hidden">Loading...</span></span>
+        </div>
+        <p></p>
+    {{/if}}
+    <Input 
+        @value={{this.value}} 
+        class="rup-input" 
+        type="email" 
+        placeholder="username@copyright.com"
+        />  
+
+    <p></p>
+    <button 
+        class="rup-btn rup-btn--lg " {{on "click" this.submitLogin}} 
+        type="button">Log In
+    </button>    
+   
+
+    </div>
+</div>

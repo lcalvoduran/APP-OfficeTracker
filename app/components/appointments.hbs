@@ -1,0 +1,129 @@
+    <div class="appointments">
+        <div class="rup-tabs rup-tabs--sm">
+            <nav role="tablist" class="rup-tabs__list" aria-label="Put a label here">
+                <button role="tab"
+                        class="rup-tabs__nav"
+                        aria-selected="true"
+                        aria-controls="tabpanel_3-1"
+                        id="tabnav_3-2"
+                        tabindex="0" type="button">
+                {{this.monthYear}}  | Week: {{this.currentWeek}}
+                </button>
+            </nav>
+        </div>        
+        <p></p>    
+
+            <nav role="navigation" aria-label="Pagination Navigation" class="rup-pagination">
+            <ul>
+                <li>
+                <a href="#" aria-label="Go to the Previous Page" class="rup-page-link" {{on "click" this.back}}>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-left"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M15.707 5.293a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414l6 6a1 1 0 001.414-1.414L10.414 12l5.293-5.293a1 1 0 000-1.414z"></path></svg>
+                </a>
+                </li>
+
+                <li><a href="#" class="rup-page-link rup-page-link--current"><span class="visuallyhidden"></span>{{this.currentWeek}}</a></li>
+
+                <li>
+                <a href="#" aria-label="Go to next Next Page" class="rup-page-link" aria-disabled="true" {{on "click" this.next}}>        
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-right"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M8.293 5.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L13.586 12 8.293 6.707a1 1 0 010-1.414z"></path></svg>
+                </a>
+                </li>
+            </ul>
+            </nav>
+
+        <p></p>
+        <table id="myTab"  align="center" cellspacing="21" cellpadding="21">
+        
+            <thead>
+                <tr>
+                {{#each this.queue as | buttonDay index| }}
+                    <th>
+                        <button                                             
+                            type="button" 
+                            class=                                               
+                                {{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
+                                {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}}
+                            >
+                            {{buttonDay.dayOfWeek}}
+                            {{buttonDay.number}}
+                        </button>                       
+                    </th>                
+                {{/each}}                                                          
+                </tr>
+            </thead>
+
+                {{!--La tag "tr" corresponde a la fila
+                La tag "td" corresponde a la columna --}}
+            <tbody id="calendar-body">                
+                {{#each this.queue as | userTD index | }}
+                    {{!-- Creame tantas columnas como dias haya --}}
+                    <td>
+                        {{#if userTD.weekend }}                        
+                        {{!-- Creame tantas filas como usuarios haya --}}
+                        {{#each userTD.user as | usuario index | }}
+                        <tr>{{usuario}}</tr>
+                        {{/each}}
+                        {{/if}}
+                    </td>        
+                {{/each}}
+
+{{!--                  
+                <tr>
+                    <td>usercol1</td>           
+                    <td>user1col2</td>
+                    <td>user8col3</td>
+                    <td>user1</td>
+                    <td>user1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>user2col1</td>
+                    <td>user2col2</td>
+                    <td></td>
+                    <td>user4</td>
+                    <td>user2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>user4col1</td>
+                    <td>user3col2</td>
+                    <td></td>
+                    <td>user5</td>
+                    <td>user3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>user6</td>
+                    <td>user14</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>user2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>user9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>  --}}
+            </tbody>
+            
+        </table>
+    </div>

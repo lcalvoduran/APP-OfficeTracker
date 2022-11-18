@@ -1,0 +1,75 @@
+<header class="rup-global-header">
+  <div class="menu-index">
+
+
+    <a href="" class="rup-global-header__application-logo" aria-label="Logo">
+      <img src = "../assets/logos/CCC-1-6-7.svg" class="rup-global-header__application-logo" width="96" height="40"> 
+    </a>   
+{{#if this.currentUser}}
+    <nav class="rup-global-header__application-menu" aria-labelledby="rup-app-menu-desc">
+      <p id="rup-app-menu-desc" class="rup-visually-hidden">The application's main menu</p>
+      <a class="rup-global-header__application-menu-item">
+        <LinkTo @route="index" class="menu-index">          
+        <span> Office Tracker</span>
+      </LinkTo>
+      </a>
+      <a class="rup-global-header__application-menu-item">
+      <LinkTo @route="bookings" class="menu-index">
+        Bookings
+      </LinkTo> 
+      </a>
+      <a class="rup-global-header__application-menu-item">
+      <LinkTo @route="my-previous-visits" class="menu-contact">
+        My previous visits
+      </LinkTo>
+      </a>
+      <div class="rup-global-header__controls" tabindex="0" role="navigation"
+        aria-label="The application's global header controls">
+        <button class="rup-btn rup-btn--secondary" type="button" aria-label="Sign in/Register" onClick = "window.location.href='/login';">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-user" role="img" aria-hidden="true">
+            <path class="primary" fill-rule="evenodd" clip-rule="evenodd"
+              d="M15.998 8.12a4 4 0 11-7.996-.241 4 4 0 017.996.242zm1.463 5.726a9 9 0 00-1.818-1.078 6.034 6.034 0 001.415-1.538 6 6 0 10-8.7 1.538c-.651.288-1.261.651-1.82 1.078A8.985 8.985 0 003 21a1 1 0 102 0 7.002 7.002 0 0114 0 1 1 0 102 0 8.985 8.985 0 00-3.539-7.154z" />
+          </svg>
+          {{this.currentUser}}
+        </button>
+        <button class="rup-btn rup-btn--error" type="button" {{on "click" this.logOut}}>Log Out</button>
+      </div>      
+    </nav>
+
+{{else}}
+
+    <nav class="rup-global-header__application-menu" aria-labelledby="rup-app-menu-desc">
+      <p id="rup-app-menu-desc" class="rup-visually-hidden">The application's main menu</p>
+      <a class="rup-global-header__application-menu-item">
+        <LinkTo @route="index" class="menu-index">          
+        <span> Office Tracker</span>
+      </LinkTo>
+      </a>
+      <a class="rup-global-header__application-menu-item">
+      <LinkTo @route="bookings" class="menu-index">
+        Bookings
+      </LinkTo> 
+      </a>
+      <a class="rup-global-header__application-menu-item">
+      <LinkTo @route="my-previous-visits" class="menu-contact">
+        My previous visits
+      </LinkTo>
+      </a>
+      <div class="rup-global-header__controls" tabindex="0" role="navigation"
+        aria-label="The application's global header controls">
+        <button class="rup-btn rup-btn--secondary" type="button" aria-label="Sign in/Register" onClick = "window.location.href='/login';">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-user" role="img" aria-hidden="true">
+            <path class="primary" fill-rule="evenodd" clip-rule="evenodd"
+              d="M15.998 8.12a4 4 0 11-7.996-.241 4 4 0 017.996.242zm1.463 5.726a9 9 0 00-1.818-1.078 6.034 6.034 0 001.415-1.538 6 6 0 10-8.7 1.538c-.651.288-1.261.651-1.82 1.078A8.985 8.985 0 003 21a1 1 0 102 0 7.002 7.002 0 0114 0 1 1 0 102 0 8.985 8.985 0 00-3.539-7.154z" />
+          </svg>
+          Sign In / Register
+        </button>
+        <button class="rup-btn rup-btn--error" type="button" {{on "click" this.logOut}}>Log Out</button>
+      </div>
+        
+    </nav>
+{{/if}}
+
+  </div>
+</header>
+

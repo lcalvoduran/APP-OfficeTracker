@@ -1,0 +1,7 @@
+import Route from '@ember/routing/route';
+export default class AppointmentsRoute extends Route{
+    model(){
+        const monthYear = {monthYear: '2022'}
+        return monthYear;
+    }
+}
