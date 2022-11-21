@@ -43,18 +43,14 @@ export default class selecteddaysComponent extends Component {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }
     }
-    //window.alert('The changes will be stored in the local Database');
-    //window.location.reload();
   }
   @action clearDates(number, month) {
 
     let findArray = this.total.findIndex(
       (element) => element.number == number && element.month == month
-    );
-    this.args.updateCleared(findArray);
-    //this.total = this.total.splice(findArray, 1);
-    
-    
+    );    
+    this.total = this.total.splice(findArray, 1);
+    this.args.updateCleared(findArray, this.total);
   }
 
   get totalSelected() {

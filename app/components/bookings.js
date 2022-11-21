@@ -63,13 +63,12 @@ export default class bookingsComponent extends Component {
     }
   }
 
-  @action updateCleared(finder){
-    console.log("there are the array days");
-    this.arrayDays[finder].marked=false;
-    console.log(this.arrayDays);
-
+  @action updateCleared(finder, total){
+    console.log("cleared one day");
+    console.log(total);
+    this.arrayDays = total;
   }
- 
+
   retrieveDaysFromLocalStorage() {
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
