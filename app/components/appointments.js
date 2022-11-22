@@ -149,6 +149,24 @@ export default class appointmentsComponent extends Component {
       lastDate.setMilliseconds(lastDate.getMilliseconds()+8.64e7);
       this.queue.push({dayOfWeek: diasSemana[i], number: myNumber[i], month: currentMonth, marked: false, weekend: false, user: [],});     
     }
+    //Controlador de marcadores
+    let markedVariable = this.retrieveData();
+    markedVariable != null ? markedVariable : 0;
+    if (markedVariable == null) {
+      return 0;
+    }
+    for (let i = 0; i < this.queue.length; i++) {
+      var match = false;
+      for (let j = 0; j < markedVariable.length; j++) {
+        var numerito = markedVariable[j].split(' ')[2];
+        var diita = markedVariable[j].split(' ')[0];
+        if (this.queue[i].number == numerito && this.queue[i].dayOfWeek == diita) {
+          match = true;
+          this.queue[i].marked = true;
+          break;
+        }
+      }
+    }    
   }
 
   @action back() {
@@ -185,6 +203,25 @@ export default class appointmentsComponent extends Component {
       }
       this.monthYear = this.monthYear =
         months[currentMonth] + ' ' + currentYear;
+    }
+
+    //Controlador de marcadores
+    let markedVariable = this.retrieveData();
+    markedVariable != null ? markedVariable : 0;
+    if (markedVariable == null) {
+      return 0;
+    }
+    for (let i = 0; i < this.queue.length; i++) {
+      var match = false;
+      for (let j = 0; j < markedVariable.length; j++) {
+        var numerito = markedVariable[j].split(' ')[2];
+        var diita = markedVariable[j].split(' ')[0];
+        if (this.queue[i].number == numerito && this.queue[i].dayOfWeek == diita) {
+          match = true;
+          this.queue[i].marked = true;
+          break;
+        }
+      }
     }    
   }
 
