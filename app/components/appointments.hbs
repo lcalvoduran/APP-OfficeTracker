@@ -16,7 +16,7 @@
             <nav role="navigation" aria-label="Pagination Navigation" class="rup-pagination">
             <ul>
                 <li>
-                <a href="#" aria-label="Go to the Previous Page" class="rup-page-link" {{!-- {{on "click" this.back}} --}}>
+                <a href="#" aria-label="Go to the Previous Page" class="rup-page-link" {{on "click" this.back}}>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-left"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M15.707 5.293a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414l6 6a1 1 0 001.414-1.414L10.414 12l5.293-5.293a1 1 0 000-1.414z"></path></svg>
                 </a>
                 </li>
@@ -43,7 +43,7 @@
                             type="button" 
                             class=                                               
                                 {{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
-                                {{!-- {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}} --}}
+                                {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}}
                             >
                             {{buttonDay.dayOfWeek}}
                             {{buttonDay.number}}

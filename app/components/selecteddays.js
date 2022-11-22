@@ -48,7 +48,7 @@ export default class selecteddaysComponent extends Component {
 
     let findArray = this.total.findIndex(
       (element) => element.number == number && element.month == month
-    );    
+    );
     this.total = this.total.splice(findArray, 1);
     this.args.updateCleared(findArray, this.total);
   }

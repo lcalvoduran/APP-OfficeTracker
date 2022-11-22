@@ -26,7 +26,7 @@ export default class bookingsComponent extends Component {
     this.arrayDays = this.retrieveDaysFromLocalStorage();
   }
 
-  @action updateArray(daysMarkeds, dateFormatted, month, marked) {
+  @action updateArray(daysMarkeds, month) {
     const createHash = (oneObject) => {
       const keys = Object.keys(oneObject).sort().join('');
       const values = Object.values(oneObject).sort().join('');
