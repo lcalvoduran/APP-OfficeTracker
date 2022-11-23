@@ -37,6 +37,9 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
+    this.displayMarkeds();
+    this.displayUsers();
+    
 
   }
   showMyCalendar(month, year) {
@@ -61,8 +64,6 @@ export default class appointmentsComponent extends Component {
         this.queue[i].weekend = true;
       }
     }
-    this.displayMarkeds();
-
   }
 
   // - - - - - - - - - - - - - - - - -
@@ -91,7 +92,7 @@ export default class appointmentsComponent extends Component {
     }
   }
 
-    displayMarkeds(){     //Change the "marked" property to true
+  displayMarkeds(){     //Change the "marked" property to true
     var numerito, diita;
     let markedVariable = this.retrieveData();
     if (markedVariable != null) {
@@ -111,11 +112,37 @@ export default class appointmentsComponent extends Component {
       return 0;
     }    
   }
+
+  displayUsers(){
+    for(var key in localStorage){
+      if (key.includes('@')) {
+        this.userList.push({user: key});
+      }
+    }
+    for (let i = 0; i < this.userList.length; i++) {
+      var daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
+      this.userList[i].days = daysStored;
+    }
+
+    var objectU, objectX;
+    for (let i = 0; i < this.userList.length; i++) {
+      objectU = this.userList[i].user.replace('@copyright.com', '');
+      objectX = this.userList[i].days;
+      for (let i = 0; i < objectX.length; i++) {
+        var numerito = objectX[i].split(' ')[2];
+        var finder = this.queue.findIndex((o) => o.number == numerito);
+        if (finder >= 0) {
+          this.queue[finder].user.push(objectU);
+          this.queue[finder].user = [...new Set(this.queue[finder].user)]; //Eliminando duplicados
+        }
+      }
+    }
+  }
   
   get getQueue() {
     if(this.args.finder){
-      //Tengo que encontrar el objeto finder en esa cola y luego marcarla como true
       var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
+      console.log(objetoFindeado);    
       this.queue.splice(
         objetoFindeado, 
         1, 
@@ -128,9 +155,10 @@ export default class appointmentsComponent extends Component {
           user: this.args.finder[0].user,
         }
       );
-      console.log(this.queue);
-    }
     return this.queue;
+    }else{
+    return this.queue;
+  }
   }
 
 
@@ -183,7 +211,9 @@ export default class appointmentsComponent extends Component {
           break;
         }
       }
-    }    
+    }
+    this.displayMarkeds();
+    this.displayUsers();
   }
 
   @action back() {
@@ -239,7 +269,8 @@ export default class appointmentsComponent extends Component {
           break;
         }
       }
-    }    
+    }
+    this.displayMarkeds();    
   }
 
 

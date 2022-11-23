@@ -66,8 +66,6 @@ export default class bookingsComponent extends Component {
 
   @action updateCleared(finder, total){
     this.finder = total;
-    console.log(this.finder);
-    //this.arrayDays = total;
   }
 
   retrieveDaysFromLocalStorage() {
