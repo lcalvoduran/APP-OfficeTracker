@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-let months = [
+const months = [
   'Jan',
   'Feb',
   'Mar',
@@ -19,6 +19,7 @@ let months = [
 export default class bookingsComponent extends Component {
   @service login;
   @tracked arrayDays = [];
+  @tracked finder;
   @tracked selectedDay;
 
   constructor() {
@@ -64,9 +65,9 @@ export default class bookingsComponent extends Component {
   }
 
   @action updateCleared(finder, total){
-    console.log("cleared one day");
-    console.log(total);
-    this.arrayDays = total;
+    this.finder = total;
+    console.log(this.finder);
+    //this.arrayDays = total;
   }
 
   retrieveDaysFromLocalStorage() {
