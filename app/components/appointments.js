@@ -115,19 +115,20 @@ export default class appointmentsComponent extends Component {
   get getQueue() {
     if(this.args.finder){
       //Tengo que encontrar el objeto finder en esa cola y luego marcarla como true
-      var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].marked);
+      var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
       this.queue.splice(
         objetoFindeado, 
         1, 
         {
-          dayOfWeek: day,
-          marked: this.isMarked,
-          number: number,
+          dayOfWeek: this.args.finder[0].dayOfWeek,
+          marked: false,
+          number: this.args.finder[0].number,
           weekend: true,
-          month: currentMonth,
-          user: this.Usuario,
+          month: this.args.finder[0].month,
+          user: this.args.finder[0].user,
         }
-      );       
+      );
+      console.log(this.queue);
     }
     return this.queue;
   }
