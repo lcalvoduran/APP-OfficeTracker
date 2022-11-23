@@ -155,10 +155,10 @@ export default class appointmentsComponent extends Component {
           user: this.args.finder[0].user,
         }
       );
-    return this.queue;
+      return this.queue;
     }else{
-    return this.queue;
-  }
+      return this.queue;
+    }
   }
 
 
