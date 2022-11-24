@@ -58,6 +58,7 @@ export default class bookingsComponent extends Component {
       concaten.forEach((item, index) => {
         item.month = months[month];
       })
+      this.login.saveSelecteds(concaten);
       return this.arrayDays = concaten;      
     }else{
       return this.arrayDays = [];
