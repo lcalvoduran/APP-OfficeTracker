@@ -275,6 +275,7 @@ export default class appointmentsComponent extends Component {
 
   @action changeArray(day, number) {
     let user = this.login.retrieveSessionStorage();
+    console.log("currentMonth: " + months[currentMonth]);
     this.Usuario = user.replace('@copyright.com', '');
     let exceptionDate = new Date(today.getFullYear(), currentMonth, number + 1);
     if (exceptionDate < today) {
