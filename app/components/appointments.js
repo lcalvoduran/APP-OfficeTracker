@@ -142,6 +142,7 @@ export default class appointmentsComponent extends Component {
   get getQueue() {
     if(this.args.finder){
       var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
+      console.log(objetoFindeado);    
       this.queue.splice(
         objetoFindeado, 
         1, 
@@ -275,7 +276,6 @@ export default class appointmentsComponent extends Component {
 
   @action changeArray(day, number) {
     let user = this.login.retrieveSessionStorage();
-    console.log("currentMonth: " + months[currentMonth]);
     this.Usuario = user.replace('@copyright.com', '');
     let exceptionDate = new Date(today.getFullYear(), currentMonth, number + 1);
     if (exceptionDate < today) {
@@ -286,6 +286,7 @@ export default class appointmentsComponent extends Component {
       } else {
         this.isMarked = !this.isMarked; 
         let positionObject = this.queue.findIndex((x) => x.number == number);
+        this.comprobacionDia();
         this.queue.splice(
           positionObject, 
           1, 
@@ -301,6 +302,17 @@ export default class appointmentsComponent extends Component {
         let queueCopy = [... this.queue];
         this.queue = queueCopy;
         this.args.updateArray(this.queue, currentMonth);
+      }
+    }
+  }
+
+  comprobacionDia(){
+    //Si encuentro un dia "1" y los de atrás son mayores que 28 entonces les corresponde otro mes
+    for (let i = 0; i < this.queue.length; i++) {
+      if(this.queue[i].number==1 && this.queue[i].dayOfWeek != "Mon"){
+        var founded = this.queue.indexOf(this.queue[i]);
+        console.log(founded);
+        //Desde ese momento los que están detrás del "1" serán "currentMoth - 1"  |   Y los demás serán "currentMonth"
       }
     }
   }

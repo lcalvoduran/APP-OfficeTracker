@@ -1,18 +1,5 @@
 import Service from '@ember/service';
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
+
 export default class LoginService extends Service {
   userArray = [];
   constructor() {
@@ -28,28 +15,6 @@ export default class LoginService extends Service {
       console.log('[CCC] ❌​ Please enter a valid mail address');
       return false;
     }
-  }
-
-  saveSelecteds(argumentos){
-    let keyUser = this.retrieveSessionStorage();
-    var controllerDates = argumentos;
-    var dateSelected;
-    var arrayDates = [];
-    if (controllerDates.length == 0) {
-      localStorage.setItem(keyUser, JSON.stringify(controllerDates));
-    } else {
-      controllerDates = Object.values(controllerDates).forEach((val) => {
-        dateSelected = new Date(
-          2022,
-          months.indexOf(val.month),
-          val.number
-        ).toDateString();
-        arrayDates.push(dateSelected);
-      });
-      for (let i = 0; i < arrayDates.length; i++) {
-        localStorage.setItem(keyUser, JSON.stringify(arrayDates));
-      }   
-    }  
   }
 
   leaveSession() {
