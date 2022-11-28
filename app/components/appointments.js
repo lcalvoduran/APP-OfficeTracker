@@ -142,6 +142,7 @@ export default class appointmentsComponent extends Component {
   get getQueue() {
     if(this.args.finder){
       var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
+      console.log(objetoFindeado);    
       this.queue.splice(
         objetoFindeado, 
         1, 
@@ -310,8 +311,7 @@ export default class appointmentsComponent extends Component {
     //Si encuentro un dia "1" y los de atrás son mayores que 28 entonces les corresponde otro mes
     for (let i = 0; i < this.queue.length; i++) {
       if(this.queue[i].number==1 && this.queue[i].dayOfWeek != "Mon"){
-        var founded = this.queue.indexOf(this.queue[i]);
-        //console.log(founded);
+        var founded = this.queue.indexOf(this.queue[i]);        
         //Desde ese momento los que están detrás del "1" serán "currentMoth - 1"  |   Y los demás serán "currentMonth"
       }
     }

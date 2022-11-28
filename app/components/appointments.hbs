@@ -60,9 +60,8 @@
                     <td>
                         {{#if userTD.weekend }}
                         {{!-- Creame tantas filas como usuarios haya --}}
-                        {{#each userTD.user as | usuario index | }}
-                        {{log usuario}}                     
-                        <tr>{{usuario}}</tr>
+                        {{#each userTD.user as | usuario index | }}                     
+                        <tr>{{this.usuario}}</tr>
                         {{/each}}
                         {{/if}}
                     </td>        

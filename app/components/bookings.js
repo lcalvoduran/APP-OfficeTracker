@@ -58,15 +58,20 @@ export default class bookingsComponent extends Component {
       concaten.forEach((item, index) => {
         item.month = months[month];
       })
-      return this.arrayDays = concaten;
+      return this.compruebameSiHayAlgunAntiguoFalse(concaten, daysMarkeds);      
     }else{
       return this.arrayDays = [];
     }
   }
 
   @action updateCleared(finder, total){
-    console.log(total);
     this.finder = total;
+  }
+
+  compruebameSiHayAlgunAntiguoFalse(array, markeds){
+    //Si queue tiene uno de los elementos que ya estaba seleccionados a true, ponlo a false.
+    return this.arrayDays = array;
+    console.log("entrando");
   }
 
   retrieveDaysFromLocalStorage() {
