@@ -58,13 +58,14 @@ export default class bookingsComponent extends Component {
       concaten.forEach((item, index) => {
         item.month = months[month];
       })
-      return this.arrayDays = concaten;      
+      return this.arrayDays = concaten;
     }else{
       return this.arrayDays = [];
     }
   }
 
   @action updateCleared(finder, total){
+    console.log(total);
     this.finder = total;
   }
 

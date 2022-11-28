@@ -55,6 +55,8 @@ export default class selecteddaysComponent extends Component {
 
   get totalSelected() {
     this.total = this.args.arrayDays;
+    this.login.saveSelecteds(this.args.arrayDays);
     return this.total;
+    
   }
 }

@@ -217,7 +217,6 @@ export default class appointmentsComponent extends Component {
   }
 
   @action back() {
-
     //Controlador de días de la semana
     let lastDay = this.queue[0].number;
     let lastDate;
@@ -270,7 +269,8 @@ export default class appointmentsComponent extends Component {
         }
       }
     }
-    this.displayMarkeds();    
+    this.displayMarkeds();
+    this.displayUsers();    
   }
 
 
