@@ -36,7 +36,7 @@ export default class selecteddaysComponent extends Component {
           2022,
           months.indexOf(val.month),
           val.number
-        ).toDateString(); //2022-10-1
+        ).toDateString();
         arrayDates.push(dateSelected);
       });
       for (let i = 0; i < arrayDates.length; i++) {

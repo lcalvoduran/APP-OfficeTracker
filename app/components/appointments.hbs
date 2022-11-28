@@ -55,12 +55,13 @@
                 {{!--La tag "tr" corresponde a la fila
                 La tag "td" corresponde a la columna --}}
             <tbody id="calendar-body">                
-                {{#each this.queue as | userTD index | }}
+                {{#each this.getQueue as | userTD index | }}
                     {{!-- Creame tantas columnas como dias haya --}}
                     <td>
-                        {{#if userTD.weekend }}                        
+                        {{#if userTD.weekend }}
                         {{!-- Creame tantas filas como usuarios haya --}}
                         {{#each userTD.user as | usuario index | }}
+                        {{log usuario}}                     
                         <tr>{{usuario}}</tr>
                         {{/each}}
                         {{/if}}

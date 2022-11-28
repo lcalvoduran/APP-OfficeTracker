@@ -31,7 +31,7 @@ export default class appointmentsComponent extends Component {
   @tracked currentWeek;
   @tracked isMarked = false;
   @tracked userList = [];
-  @tracked Usuario;
+  @tracked usuario;
   @tracked queue = [];
 
   constructor() {
@@ -103,7 +103,7 @@ export default class appointmentsComponent extends Component {
           var diita = markedVariable[j].split(' ')[0];
           if (this.queue[i].number == numerito && this.queue[i].dayOfWeek == diita) {
             match = true;
-            this.queue[i].marked = true;
+            this.queue[i].marked = true;            
             break;
           }
         }
@@ -142,7 +142,6 @@ export default class appointmentsComponent extends Component {
   get getQueue() {
     if(this.args.finder){
       var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
-      console.log(objetoFindeado);    
       this.queue.splice(
         objetoFindeado, 
         1, 
@@ -276,7 +275,7 @@ export default class appointmentsComponent extends Component {
 
   @action changeArray(day, number) {
     let user = this.login.retrieveSessionStorage();
-    this.Usuario = user.replace('@copyright.com', '');
+    this.usuario = user.replace('@copyright.com', '');
     let exceptionDate = new Date(today.getFullYear(), currentMonth, number + 1);
     if (exceptionDate < today) {
       window.alert('You cannot select days older than your current date');
@@ -296,7 +295,7 @@ export default class appointmentsComponent extends Component {
             number: number,
             weekend: true,
             month: currentMonth,
-            user: this.Usuario,
+            user: this.usuario,
           }
         );
         let queueCopy = [... this.queue];
@@ -304,6 +303,7 @@ export default class appointmentsComponent extends Component {
         this.args.updateArray(this.queue, currentMonth);
       }
     }
+     
   }
 
   comprobacionDia(){
@@ -311,7 +311,7 @@ export default class appointmentsComponent extends Component {
     for (let i = 0; i < this.queue.length; i++) {
       if(this.queue[i].number==1 && this.queue[i].dayOfWeek != "Mon"){
         var founded = this.queue.indexOf(this.queue[i]);
-        console.log(founded);
+        //console.log(founded);
         //Desde ese momento los que están detrás del "1" serán "currentMoth - 1"  |   Y los demás serán "currentMonth"
       }
     }
