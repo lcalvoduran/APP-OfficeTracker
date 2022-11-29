@@ -1,4 +1,5 @@
 import Service from '@ember/service';
+var listaDias;
 const months = [
   'Jan',
   'Feb',
@@ -31,7 +32,7 @@ export default class LoginService extends Service {
   }
 
   saveSelecteds(argumentos){
-    let keyUser = this.retrieveSessionStorage();
+    let keyUser = this.retrieveSessionStorage();   
     var controllerDates = argumentos;
     var dateSelected;
     var arrayDates = [];
@@ -46,6 +47,9 @@ export default class LoginService extends Service {
         ).toDateString();
         arrayDates.push(dateSelected);
       });
+      listaDias = arrayDates;
+      //Si hay cosas dentro cogelas y concaténalas
+
       for (let i = 0; i < arrayDates.length; i++) {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }   
