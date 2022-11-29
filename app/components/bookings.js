@@ -58,7 +58,8 @@ export default class bookingsComponent extends Component {
       concaten.forEach((item, index) => {
         item.month = months[month];
       })
-      return this.compruebameSiHayAlgunAntiguoFalse(concaten, daysMarkeds);      
+      let intersection = concaten.filter(x => daysMarkeds.includes(x));
+      return this.arrayDays = intersection;
     }else{
       return this.arrayDays = [];
     }
@@ -68,12 +69,6 @@ export default class bookingsComponent extends Component {
     this.finder = total;
   }
 
-  compruebameSiHayAlgunAntiguoFalse(array, markeds){
-    //Si markeds tiene uno de los elementos que ya estaba seleccionados a true, ponlo a false.
-    let intersection = array.filter(x => markeds.includes(x));
-    return this.arrayDays = intersection;
-
-  }
 
   retrieveDaysFromLocalStorage() {
     let variable = this.login.retrieveSessionStorage();
