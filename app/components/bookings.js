@@ -69,15 +69,10 @@ export default class bookingsComponent extends Component {
   }
 
   compruebameSiHayAlgunAntiguoFalse(array, markeds){
-    //Si queue tiene uno de los elementos que ya estaba seleccionados a true, ponlo a false.
-    console.log("contenido arrayDays: ");    
-    console.log(array);
-    console.log("contenido markeds: ");
-    console.log(markeds);
+    //Si markeds tiene uno de los elementos que ya estaba seleccionados a true, ponlo a false.
     let intersection = array.filter(x => markeds.includes(x));
-    console.log(intersection);
-    
-    return this.arrayDays = array;
+    return this.arrayDays = intersection;
+
   }
 
   retrieveDaysFromLocalStorage() {
