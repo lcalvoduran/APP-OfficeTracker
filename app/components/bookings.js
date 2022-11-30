@@ -58,6 +58,7 @@ export default class bookingsComponent extends Component {
       concaten.forEach((item, index) => {
         item.month = months[month];
       })
+      //return this.arrayDays = concaten;
       let intersection = concaten.filter(x => daysMarkeds.includes(x));
       return this.arrayDays = intersection;
     }else{

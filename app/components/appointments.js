@@ -286,7 +286,7 @@ export default class appointmentsComponent extends Component {
       } else {
         this.isMarked = !this.isMarked; 
         let positionObject = this.queue.findIndex((x) => x.number == number);
-        this.comprobacionDia();
+        //this.comprobacionDia();
         this.queue.splice(
           positionObject, 
           1, 
