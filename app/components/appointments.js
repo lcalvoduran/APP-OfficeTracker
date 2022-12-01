@@ -142,7 +142,7 @@ export default class appointmentsComponent extends Component {
   get getQueue() {
     if(this.args.finder){
       var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
-      console.log(objetoFindeado);    
+      //console.log(objetoFindeado);    
       this.queue.splice(
         objetoFindeado, 
         1, 

@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+var guardado = [];
 const months = [
   'Jan',
   'Feb',
@@ -57,9 +58,9 @@ export default class bookingsComponent extends Component {
       )));
       concaten.forEach((item, index) => {
         item.month = months[month];
-      })
-      //return this.arrayDays = concaten;
+      })      
       let intersection = concaten.filter(x => daysMarkeds.includes(x));
+      //console.log(intersection);
       return this.arrayDays = intersection;
     }else{
       return this.arrayDays = [];

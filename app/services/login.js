@@ -32,8 +32,11 @@ export default class LoginService extends Service {
   }
 
   saveSelecteds(argumentos){
-    let keyUser = this.retrieveSessionStorage();   
+    let keyUser = this.retrieveSessionStorage();
+    var retriever = localStorage.getItem(keyUser);
     var controllerDates = argumentos;
+    console.log(argumentos);
+    console.log(retriever);
     var dateSelected;
     var arrayDates = [];
     if (controllerDates.length == 0) {
@@ -47,9 +50,7 @@ export default class LoginService extends Service {
         ).toDateString();
         arrayDates.push(dateSelected);
       });
-      listaDias = arrayDates;
-      //Si hay cosas dentro cogelas y concaténalas
-
+      listaDias = arrayDates;      
       for (let i = 0; i < arrayDates.length; i++) {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }   

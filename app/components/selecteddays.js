@@ -45,7 +45,6 @@ export default class selecteddaysComponent extends Component {
     }
   }
   @action clearDates(number, month) {
-
     let findArray = this.total.findIndex(
       (element) => element.number == number && element.month == month
     );
