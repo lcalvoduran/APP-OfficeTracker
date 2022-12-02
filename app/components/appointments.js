@@ -305,16 +305,5 @@ export default class appointmentsComponent extends Component {
       }
     }
      
-  }
-
-  comprobacionDia(){
-    //Si encuentro un dia "1" y los de atrás son mayores que 28 entonces les corresponde otro mes
-    for (let i = 0; i < this.queue.length; i++) {
-      if(this.queue[i].number==1 && this.queue[i].dayOfWeek != "Mon"){
-        var founded = this.queue.indexOf(this.queue[i]);        
-        //Desde ese momento los que están detrás del "1" serán "currentMoth - 1"  |   Y los demás serán "currentMonth"
-      }
-    }
-  }
-  
+  }  
 }
