@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-var listaDias;
+var listaDias=[];
 const months = [
   'Jan',
   'Feb',
@@ -33,10 +33,9 @@ export default class LoginService extends Service {
 
   saveSelecteds(argumentos){
     let keyUser = this.retrieveSessionStorage();
-    var retriever = localStorage.getItem(keyUser);
     var controllerDates = argumentos;
-    console.log(argumentos);
-    console.log(retriever);
+    listaDias.push(controllerDates);
+    console.log(listaDias);
     var dateSelected;
     var arrayDates = [];
     if (controllerDates.length == 0) {
