@@ -34,8 +34,6 @@ export default class LoginService extends Service {
   saveSelecteds(argumentos){
     let keyUser = this.retrieveSessionStorage();
     var controllerDates = argumentos;
-    listaDias.push(controllerDates);
-    console.log(listaDias);
     var dateSelected;
     var arrayDates = [];
     if (controllerDates.length == 0) {
@@ -49,7 +47,7 @@ export default class LoginService extends Service {
         ).toDateString();
         arrayDates.push(dateSelected);
       });
-      listaDias = arrayDates;      
+      listaDias = arrayDates;    
       for (let i = 0; i < arrayDates.length; i++) {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }   
