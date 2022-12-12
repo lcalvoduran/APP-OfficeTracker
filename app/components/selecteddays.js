@@ -51,24 +51,15 @@ export default class selecteddaysComponent extends Component {
     this.total = this.total.splice(findArray, 1);
     this.args.updateCleared(findArray, this.total);
   }
-/* 
-  get totalSelected() {
-    this.total = this.args.arrayDays;
-    this.login.saveSelecteds(this.args.arrayDays);
-    return this.total;    
-  }
-*/
 
 get totalSelected() {
-
   this.total = this.args.arrayDays;
-  if(this.total.length == 0){
-    console.log("ha dado 0");
-    //compruebaSiExisteAlgoEnBBDD
-    return this.total;
-  }else{  
-  this.login.saveSelecteds(this.args.arrayDays);
-  return this.total;    
-    } 
+  this.login.saveSelecteds(this.total);
+  if(localStorage.getItem(this.login.retrieveSessionStorage()).length > 2){
+    console.log("hay que añadir un nuevo string");
+  }else{
+    
   }
+  return this.total;
+  } 
 }
