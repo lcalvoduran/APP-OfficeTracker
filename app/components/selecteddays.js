@@ -52,14 +52,9 @@ export default class selecteddaysComponent extends Component {
     this.args.updateCleared(findArray, this.total);
   }
 
-get totalSelected() {
-  this.total = this.args.arrayDays;
-  this.login.saveSelecteds(this.total);
-  if(localStorage.getItem(this.login.retrieveSessionStorage()).length > 2){
-    console.log("hay que añadir un nuevo string");
-  }else{
-    
+  get totalSelected() {
+    this.total = this.args.arrayDays;
+    this.login.saveSelecteds(this.total);
+    return this.total;
   }
-  return this.total;
-  } 
 }

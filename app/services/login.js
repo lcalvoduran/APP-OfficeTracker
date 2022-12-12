@@ -33,6 +33,7 @@ export default class LoginService extends Service {
 
   saveSelecteds(argumentos){
     let keyUser = this.retrieveSessionStorage();
+    console.log(argumentos);
     var controllerDates = argumentos;
     var dateSelected;
     var arrayDates = [];
