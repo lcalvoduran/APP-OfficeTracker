@@ -33,8 +33,13 @@ export default class LoginService extends Service {
 
   saveSelecteds(argumentos){
     let keyUser = this.retrieveSessionStorage();
-    console.log(argumentos);
+    let varLocal = localStorage.getItem(keyUser);
+    console.log(varLocal);
     var controllerDates = argumentos;
+    //Si el length es 0 comprobar si hay cosas antiguas en el localStorage, si no pues metemos el chorizo.
+    if(controllerDates.length == 0 && varLocal.length == 0){
+      console.log("se han puesto los argumentos a 0 y no hay nada en el localStorage");
+    }else{
     var dateSelected;
     var arrayDates = [];
     if (controllerDates.length == 0) {
@@ -53,6 +58,7 @@ export default class LoginService extends Service {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }   
     }  
+  }
   }  
 
   leaveSession() {
