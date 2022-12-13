@@ -53,30 +53,6 @@ export default class LoginService extends Service {
     }
   }
 
-  /**
-  saveSelecteds(argumentos) {
-  let keyUser = this.retrieveSessionStorage();
-  let savedData = localStorage.getItem(keyUser);
-
-  if (savedData === null) {
-    localStorage.setItem(keyUser, JSON.stringify(controllerDates));
-  } else {
-    let arrayDates = [];    
-    let controllerDates = argumentos;
-    Object.values(controllerDates).forEach((val) => {
-      let dateSelected = new Date(
-        2022,
-        months.indexOf(val.month),
-        val.number
-      ).toDateString();
-      arrayDates.push(dateSelected);
-    });   
-    localStorage.setItem(keyUser, JSON.stringify(arrayDates));
-  }
-  }
-
-   **/
-
   leaveSession() {
     let filtrado = this.userArray.filter((element) => element.estado == true);
     if (filtrado.length > 0) {
