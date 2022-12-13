@@ -1,5 +1,4 @@
 import Service from '@ember/service';
-var listaDias=[];
 const months = [
   'Jan',
   'Feb',
@@ -34,15 +33,28 @@ export default class LoginService extends Service {
   saveSelecteds(argumentos){
     let keyUser = this.retrieveSessionStorage();
     let varLocal = localStorage.getItem(keyUser);
-    let salvaGuarda = null;
-    console.log(varLocal);
     var controllerDates = argumentos;
     //Si el length es 0 comprobar si hay cosas antiguas en el localStorage, si no pues metemos el chorizo.
     var dateSelected;
     var arrayDates = [];
-    if (controllerDates.length == 0) {
-      localStorage.setItem(keyUser, JSON.stringify(controllerDates));
-    } else {
+    if (controllerDates.length == 0 && varLocal.length == 2) { //Si no hay argumentos y no hay nada en localStorage pues eso.
+      console.log("primer if: NO HAY ARGUMENTOS Y LA LOCALSTORAGE ESTÁ VACÍA")  
+      localStorage.setItem(keyUser, JSON.stringify(controllerDates));    
+    }else if(controllerDates.length == 0 && varLocal.length > 2){ 
+      console.log("segundo if: NO HAY ARGUMENTOS PERO LA LOCALSTORAGE TIENE COSAS " + varLocal.length)
+    }else if(controllerDates.length > 0 && varLocal.length == 2){
+      console.log("tercer if: HAY ARGUMENTOS Y LA LOCALSTORAGE ESTÁ VACÍA");
+      const arrayDates = Object.values(controllerDates).map(val => new Date(2022, months.indexOf(val.month), val.number).toDateString());
+      for (let i = 0; i < arrayDates.length; i++) {
+        localStorage.setItem(keyUser, JSON.stringify(arrayDates));
+      }      
+    }else{
+      console.log("cuarto if: HAY ARGUMENTOS Y LA LOCALSTORAGE ESTÁ LLENA");
+    }
+}
+
+/**
+  
       controllerDates = Object.values(controllerDates).forEach((val) => {
         dateSelected = new Date(
           2022,
@@ -50,13 +62,36 @@ export default class LoginService extends Service {
           val.number
         ).toDateString();
         arrayDates.push(dateSelected);
-      });
-      listaDias = arrayDates;    
+      });   
       for (let i = 0; i < arrayDates.length; i++) {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }
-    }
-  }  
+ 
+ **/
+
+  /**
+  saveSelecteds(argumentos) {
+  let keyUser = this.retrieveSessionStorage();
+  let savedData = localStorage.getItem(keyUser);
+
+  if (savedData === null) {
+    localStorage.setItem(keyUser, JSON.stringify(controllerDates));
+  } else {
+    let arrayDates = [];    
+    let controllerDates = argumentos;
+    Object.values(controllerDates).forEach((val) => {
+      let dateSelected = new Date(
+        2022,
+        months.indexOf(val.month),
+        val.number
+      ).toDateString();
+      arrayDates.push(dateSelected);
+    });   
+    localStorage.setItem(keyUser, JSON.stringify(arrayDates));
+  }
+  }
+
+   **/
 
   leaveSession() {
     let filtrado = this.userArray.filter((element) => element.estado == true);
