@@ -36,8 +36,8 @@ export default class LoginService extends Service {
     var controllerDates = argumentos;
     var dateSelected;
     var arrayDates = [];    
-    if (controllerDates.length == 0) {       
-      localStorage.setItem(keyUser, JSON.stringify(controllerDates));
+    if (controllerDates.length == 0) {   
+        localStorage.setItem(keyUser, JSON.stringify(controllerDates));
     } else {
       controllerDates = Object.values(controllerDates).forEach((val) => {
         dateSelected = new Date(
@@ -46,7 +46,7 @@ export default class LoginService extends Service {
           val.number
         ).toDateString();
         arrayDates.push(dateSelected);
-      });   
+      });
       for (let i = 0; i < arrayDates.length; i++) {
         localStorage.setItem(keyUser, JSON.stringify(arrayDates));
       }

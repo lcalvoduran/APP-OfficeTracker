@@ -52,9 +52,44 @@ export default class selecteddaysComponent extends Component {
     this.args.updateCleared(findArray, this.total);
   }
 
-  get totalSelected() {
+  get totalSelected() {    
+    let fetch = this.buildObjectWithAnString();
     this.total = this.args.arrayDays;
-    this.login.saveSelecteds(this.total);
-    return this.total;
+    this.login.saveSelecteds(this.total);    
+    //Si habia objetos almacenados concaténalos
+    if(fetch.length > 0){
+      console.log("entra por el if");
+      let buenacampeon = {...fetch, ...this.total};
+      return this.total; 
+    }else{
+      this.total = this.args.arrayDays;
+      console.log("entra por el else");
+      return this.total;
+    }    
+  }
+
+  
+  retrieveData(){         //Return the "pretty" data of localStorage
+    let variable = this.login.retrieveSessionStorage();
+    let daysLocal = JSON.parse(localStorage.getItem(variable));
+    if (variable) {
+      if (daysLocal) {
+        daysLocal.reduce((a, v) => ({ ...a, [v]: v }), {});
+        return daysLocal;
+      } else {
+        null;
+      }
+    } else {
+      null;
+    }
+  }
+
+  buildObjectWithAnString(){
+    var object = []; var fetch = this.retrieveData();
+    for (let i = 0; i < fetch.length; i++) {
+      var diita = fetch[i].split(' ')[0]; var mes = fetch[i].split(' ')[1]; var numerito = fetch[i].split(' ')[2]; var anyo = fetch[i].split(' ')[3];          
+      object.push({dayOfWeek: diita, marked: true, month: mes, number: numerito, weekend:true });      
+    }
+    return object;
   }
 }
