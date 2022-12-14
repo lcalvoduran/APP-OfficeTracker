@@ -43,8 +43,8 @@ export default class appointmentsComponent extends Component {
 
   }
   showMyCalendar(month, year) {
-    this.monthYear = months[currentMonth] + ' ' + currentYear; // Método para obtener el mes actual        
-    this.currentWeek = Math.ceil(myDays/7)+1; //Método para obtener la semana actual
+    this.monthYear = months[currentMonth] + ' ' + currentYear;
+    this.currentWeek = Math.ceil(myDays/7)+1;
     let hoy = this.currentMonday(today);
     myNumber = [];
     for (let i = 0; i < 7; i++) {
@@ -133,7 +133,7 @@ export default class appointmentsComponent extends Component {
         var finder = this.queue.findIndex((o) => o.number == numerito);
         if (finder >= 0) {
           this.queue[finder].user.push(objectU);
-          this.queue[finder].user = [...new Set(this.queue[finder].user)]; //Eliminando duplicados
+          this.queue[finder].user = [...new Set(this.queue[finder].user)];
         }
       }
     }
@@ -141,8 +141,7 @@ export default class appointmentsComponent extends Component {
   
   get getQueue() {
     if(this.args.finder){
-      var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);
-      //console.log(objetoFindeado);    
+      var objetoFindeado = this.queue.findIndex((x) => x.number == this.args.finder[0].number);  
       this.queue.splice(
         objetoFindeado, 
         1, 
@@ -286,7 +285,6 @@ export default class appointmentsComponent extends Component {
       } else {
         this.isMarked = !this.isMarked; 
         let positionObject = this.queue.findIndex((x) => x.number == number);
-        //this.comprobacionDia();
         this.queue.splice(
           positionObject, 
           1, 

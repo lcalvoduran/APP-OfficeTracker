@@ -52,24 +52,16 @@ export default class selecteddaysComponent extends Component {
     this.args.updateCleared(findArray, this.total);
   }
 
-  get totalSelected() {    
+  get totalSelected(){
     let fetch = this.buildObjectWithAnString();
+    console.log(this.args.arrayDays);
     this.total = this.args.arrayDays;
-    this.login.saveSelecteds(this.total);    
-    //Si habia objetos almacenados concaténalos
-    if(fetch.length > 0){
-      console.log("entra por el if");
-      let buenacampeon = {...fetch, ...this.total};
-      return this.total; 
-    }else{
-      this.total = this.args.arrayDays;
-      console.log("entra por el else");
-      return this.total;
-    }    
+    this.login.saveSelecteds(this.total);
+    return this.total;
   }
 
   
-  retrieveData(){         //Return the "pretty" data of localStorage
+  retrieveData(){
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
     if (variable) {
@@ -86,10 +78,17 @@ export default class selecteddaysComponent extends Component {
 
   buildObjectWithAnString(){
     var object = []; var fetch = this.retrieveData();
-    for (let i = 0; i < fetch.length; i++) {
-      var diita = fetch[i].split(' ')[0]; var mes = fetch[i].split(' ')[1]; var numerito = fetch[i].split(' ')[2]; var anyo = fetch[i].split(' ')[3];          
-      object.push({dayOfWeek: diita, marked: true, month: mes, number: numerito, weekend:true });      
+    if(fetch == null){
+      console.log("fetch nulo");
+      return [];
+    }else{
+      for (let i = 0; i < fetch.length; i++) {
+        var diita = fetch[i].split(' ')[0]; var mes = fetch[i].split(' ')[1]; var numerito = fetch[i].split(' ')[2]; var anyo = fetch[i].split(' ')[3];          
+        object.push({dayOfWeek: diita, marked: true, month: mes, number: numerito, weekend:true });      
+      }
+      return object;
     }
-    return object;
   }
+
+  
 }

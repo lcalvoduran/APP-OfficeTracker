@@ -37,6 +37,7 @@ export default class LoginService extends Service {
     var dateSelected;
     var arrayDates = [];    
     if (controllerDates.length == 0) {   
+        
         localStorage.setItem(keyUser, JSON.stringify(controllerDates));
     } else {
       controllerDates = Object.values(controllerDates).forEach((val) => {

@@ -52,7 +52,7 @@ export default class bookingsComponent extends Component {
     var filtradisimo = flateado.filter((estado) => estado.marked == true);
     if (filtradisimo != null) {    
       var concaten = filtradisimo.concat(salvaGuarda);      
-      concaten = concaten.filter((value, index, self) => //Eliminar duplicados
+      concaten = concaten.filter((value, index, self) =>
       index === self.findIndex((t) => (
         t.dayOfWeek === value.dayOfWeek && t.number === value.number
       )));
@@ -60,7 +60,6 @@ export default class bookingsComponent extends Component {
         item.month = months[month];
       })      
       let intersection = concaten.filter(x => daysMarkeds.includes(x));
-      //console.log(intersection);
       return this.arrayDays = intersection;
     }else{
       return this.arrayDays = [];
